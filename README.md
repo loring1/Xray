@@ -15,13 +15,13 @@
 - 兼容 Xray 命令
 - 强大的快捷参数
 - 支持所有常用协议
+- 一键添加 VLESS-REALITY (默认)
 - 一键添加 Shadowsocks 2022
-- 一键添加 VMess-(TCP/mKCP/QUIC)
-- 一键添加 VMess-(WS/H2/gRPC)-TLS
-- 一键添加 VLESS-(WS/H2/gRPC)-TLS
-- 一键添加 Trojan-(WS/H2/gRPC)-TLS
-- 一键添加 VLESS-XTLS-uTLS-REALITY
-- 一键添加 VMess-(TCP/mKCP/QUIC) 动态端口
+- 一键添加 VMess-(TCP/mKCP)
+- 一键添加 VMess-(WS/gRPC)-TLS
+- 一键添加 VLESS-(WS/gRPC/XHTTP)-TLS
+- 一键添加 Trojan-(WS/gRPC)-TLS
+- 一键添加 VMess-(TCP/mKCP) 动态端口
 - 一键启用 BBR
 - 一键更改伪装网站
 - 一键更改 (端口/UUID/密码/域名/路径/加密方式/SNI/动态端口/等...)
@@ -50,7 +50,7 @@
 使用：`xray help`
 
 ```
-Xray script v1.0 by 233boy
+Xray script v1.21 by 233boy
 Usage: xray [options]... [args]...
 
 基本:
@@ -87,6 +87,7 @@ Usage: xray [options]... [args]...
    web [name] [domain]                             更改伪装网站
 
 进阶:
+   dns [...]                                       设置 DNS
    dd, ddel [name...]                              删除多个配置**
    fix [name]                                      修复一个配置
    fix-all                                         修复全部配置
@@ -95,7 +96,7 @@ Usage: xray [options]... [args]...
 
 管理:
    un, uninstall                                   卸载
-   u, update [core | sh | caddy] [ver]             更新
+   u, update [core | sh | dat | caddy] [ver]       更新
    U, update.sh                                    更新脚本
    s, status                                       运行状态
    start, stop, restart [caddy]                    启动, 停止, 重启
@@ -103,9 +104,10 @@ Usage: xray [options]... [args]...
    reinstall                                       重装脚本
 
 测试:
-   client, genc [name]                             显示用于客户端 JOSN, 仅供参考
+   client [name]                                   显示用于客户端 JSON, 仅供参考
    debug [name]                                    显示一些 debug 信息, 仅供参考
    gen [...]                                       同等于 add, 但只显示 JSON 内容, 不创建文件, 测试使用
+   genc [name]                                     显示用于客户端部分 JSON, 仅供参考
    no-auto-tls [...]                               同等于 add, 但禁止自动配置 TLS, 可用于 *TLS 相关协议
    xapi [...]                                      同等于 xray api, 但 API 后端使用当前运行的 Xray 服务
 
